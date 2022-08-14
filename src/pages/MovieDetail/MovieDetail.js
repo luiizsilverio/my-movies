@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Star, ThumbsUp, FilmStrip, CalendarBlank } from "phosphor-react";
+import { Star, ThumbsUp, FilmStrip, CalendarBlank, Popcorn } from "phosphor-react";
 
 import {
   fetchAsyncMovieOrSeriesDetails,
@@ -35,7 +35,7 @@ const MovieDetail = () => {
   return (
     <div className='movie-section'>
       <div className="section-left">
-        <div className="movie-title">{data.Title}</div>
+        <div className="movie-title">{ data.Title }</div>
         <div className="movie-rating">
           <span>
             IMDB {' '}
@@ -81,7 +81,13 @@ const MovieDetail = () => {
       </div>
 
       <div className="section-right">
-        <img src={data.Poster} alt={data.Title} />
+        {
+          data.Poster === "N/A" ? (
+            <Popcorn alt={data.Title} size="50%" />
+          ) : (
+            <img src={data.Poster} alt={data.Title} />
+          )
+        }
       </div>
     </div>
   );

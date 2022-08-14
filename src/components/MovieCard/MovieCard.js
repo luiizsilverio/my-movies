@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Popcorn } from "phosphor-react";
 import "./MovieCard.scss";
 
 const MovieCard = (props) => {
@@ -10,7 +11,13 @@ const MovieCard = (props) => {
       <Link to={`/movie/${data.imdbID}`}>
         <div className="card-inner">
           <div className="card-top">
-            <img src={data.Poster} alt={data.Title} />
+            {
+              data.Poster === "N/A" ? (
+                <Popcorn />
+              ) : (
+                <img src={data.Poster} alt={data.Title} />
+              )
+            }
           </div>
           <div className="card-bottom">
             <div className="card-info">
