@@ -11,7 +11,8 @@
 ## Sobre o projeto
 Aplicação desenvolvida durante o curso [Learn React Redux Toolkit with Project in 2 Hours](https://www.youtube.com/watch?v=2kL28Qyw9-0), do professor Dipesh Malvia.<br />
 Desenvolvida em React, __Redux-Toolkit__ para gerenciar os estados da aplicação e rotas com __React-Router-DOM__.<br />
-Acessa a API de filmes [OMDb API](https://www.omdbapi.com), possui busca de filmes e séries pelo título e carrossel de imagens com __React-Slick__.<br />
+Acessa a API de filmes [OMDb API](https://www.omdbapi.com), possui busca de filmes e séries pelo título e carrossel de imagens com __React-Slick__. <br />
+Acesse a aplicação [aqui](https://my-movies-b8f8d9.netlify.app). <br />
 
 
 ## :hammer_and_wrench: Tecnologias
