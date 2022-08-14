@@ -9,14 +9,14 @@
 * [Contato](#email-contato)
 
 ## Sobre o projeto
-Aplicação desenvolvida durante o curso [Learn React Redux Toolkit with Project in 2 Hours](https://www.youtube.com/watch?v=2kL28Qyw9-0), do prof. Dipesh Malvia.<br />
-Desenvolvida em React, __Redux-Toolkit__ para controlar os estados da aplicação e rotas com __React-Router-DOM__.<br />
+Aplicação desenvolvida durante o curso [Learn React Redux Toolkit with Project in 2 Hours](https://www.youtube.com/watch?v=2kL28Qyw9-0), do professor Dipesh Malvia.<br />
+Desenvolvida em React, __Redux-Toolkit__ para gerenciar os estados da aplicação e rotas com __React-Router-DOM__.<br />
 Acessa a API de filmes [OMDb API](https://www.omdbapi.com), possui busca de filmes e séries pelo título e carrossel de imagens com __React-Slick__.<br />
 
 
 ## :hammer_and_wrench: Tecnologias
 * __React__
-* __Redux-Toolkit__ para controlar os estados
+* __Redux-Toolkit__ para gerenciar os estados
 * __React-Router-DOM__ para rotas
 * __React-Slick__ para carrossel de imagens
 * __Phosphor-React__ para ícones
