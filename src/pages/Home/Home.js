@@ -8,7 +8,7 @@ const Home = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    // dispatch(fetchAsyncMovies());
+    dispatch(fetchAsyncMovies());
     dispatch(fetchAsyncSeries());
   }, [dispatch]);
 

@@ -8,20 +8,31 @@ export const fetchAsyncMovies =
       `?apiKey=${process.env.REACT_APP_OMDB_API_KEY}&s=${movieText}&type=movie`
     );
     return response.data;
-  })
+  });
 
 export const fetchAsyncSeries =
-  createAsyncThunk('movies/fetchAsyncMovies', async () => {
+  createAsyncThunk('movies/fetchAsyncSeries', async () => {
     const serieText = "Sandman";
     const response = await movieApi.get(
       `?apiKey=${process.env.REACT_APP_OMDB_API_KEY}&s=${serieText}&type=series`
     );
     return response.data;
-  })
+  });
+
+  export const fetchAsyncMovieOrSeriesDetails =
+    createAsyncThunk('movies/fetchAsyncMovieOrSeriesDetails',
+      async (id) => {
+        const response = await movieApi.get(
+          `?apiKey=${process.env.REACT_APP_OMDB_API_KEY}&i=${id}&Plot=full`
+        );
+        return response.data;
+      }
+    );
 
 const initialState = {
   movies: {},
-  series: {}
+  series: {},
+  selectedMovieOrShow: {}
 }
 
 export const movieSlice = createSlice({
@@ -47,12 +58,17 @@ export const movieSlice = createSlice({
         console.log('fetchAsyncSeries/Sucesso');
         state.series = action.payload;
       },
+      [fetchAsyncMovieOrSeriesDetails.fulfilled]: (state, action) => {
+        console.log('fetchAsyncMovieOrSeriesDetails/Sucesso');
+        state.selectedMovieOrShow = action.payload;
+      },
     }
 })
 
 export const { addMovies } = movieSlice.actions
 
 export const getAllMovies = (state) => state.movies.movies;
-export const getAllSeries = (state) => state.movies.shows;
+export const getAllSeries = (state) => state.movies.series;
+export const getSelectedMovieOrShow = (state) => state.movies.selectedMovieOrShow;
 
 export default movieSlice.reducer
