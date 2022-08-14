@@ -1,7 +1,14 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAsyncMovieOrSeriesDetails, getSelectedMovieOrShow } from '../../redux/movies/movieSlice';
+import { Star, ThumbsUp, FilmStrip, CalendarBlank } from "phosphor-react";
+
+import {
+  fetchAsyncMovieOrSeriesDetails,
+  getSelectedMovieOrShow,
+  removeSelectedMovieOrShow
+} from '../../redux/movies/movieSlice';
+
 import "./MovieDetail.scss";
 
 const MovieDetail = () => {
@@ -9,10 +16,21 @@ const MovieDetail = () => {
   const dispatch = useDispatch();
   const data = useSelector(getSelectedMovieOrShow);
 
-  console.log(data)
   useEffect(() => {
     dispatch(fetchAsyncMovieOrSeriesDetails(imdbID));
+
+    return () => {
+      dispatch(removeSelectedMovieOrShow());
+    }
   }, [dispatch, imdbID]);
+
+  if (Object.keys(data).length === 0) {
+    return (
+      <div className='movie-section'>
+        <div>Aguarde...</div>
+      </div>
+    )
+  }
 
   return (
     <div className='movie-section'>
@@ -20,18 +38,23 @@ const MovieDetail = () => {
         <div className="movie-title">{data.Title}</div>
         <div className="movie-rating">
           <span>
-            IMDB <i className="fa fa-star"></i> : {data.imdbRating}
+            IMDB {' '}
+            <Star size={16} color="#ff9e00" weight="fill" /> : {data.imdbRating}
           </span>
           <span>
-            IMDB avaliações<i className="fa fa-thumbs-up" /> : {data.imdbVotes}
+            Avaliações {' '}
+            <ThumbsUp size={16} color="#fafafa" weight="fill" /> : {data.imdbVotes}
           </span>
           <span>
-            Duração <i className="fa fa-film" /> : {data.Runtime}
+            Duração {' '}
+            <FilmStrip size={16} color="#c4c4cF" weight="fill" /> : {data.Runtime}
           </span>
           <span>
-            Ano <i className="fa fa-calendar" /> : {data.Year}
+            Ano {' '}
+            <CalendarBlank size={16} color="peachpuff" weight="fill" /> : {data.Year}
           </span>
         </div>
+
         <div className="movie-plot">{data.Plot}</div>
         <div className="movie-info">
           <div>
