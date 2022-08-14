@@ -1,13 +1,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { getAllMovies } from '../../redux/movies/movieSlice';
+import { getAllMovies, getAllSeries } from '../../redux/movies/movieSlice';
 import MovieCard from '../MovieCard/MovieCard';
 import "./MovieList.scss";
 
 const MovieList = () => {
-  const movies = useSelector(getAllMovies);
+  // const movies = useSelector(getAllMovies);
+  const movies = useSelector(getAllSeries);
 
-  const renderMovies = movies.Response === "True";
+  const renderMovies = movies ? movies.Response === "True" : null;
 
   return (
     <div className='movie-wrapper'>
@@ -20,7 +21,7 @@ const MovieList = () => {
             ))
           ) : (
             <div className="movies-error">
-              <h3>{movies.Error}</h3>
+              <h3>{movies && movies.Error}</h3>
             </div>
           )}
         </div>
