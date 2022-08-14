@@ -5,11 +5,13 @@ import MovieList from '../../components/MovieList/MovieList';
 import { fetchAsyncMovies, fetchAsyncSeries } from '../../redux/movies/movieSlice';
 
 const Home = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const movieText = "Charlie Chaplin";
+  const serieText = "Sandman";
 
   useEffect(() => {
-    dispatch(fetchAsyncMovies());
-    dispatch(fetchAsyncSeries());
+    dispatch(fetchAsyncMovies(movieText));
+    dispatch(fetchAsyncSeries(serieText));
   }, [dispatch]);
 
   return (
